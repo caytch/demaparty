@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>DeMA PArTY</title>
+    <title>DeMA pARtY</title>
     <style>
         * {
             margin: 0;
@@ -17,22 +17,7 @@
             height: 100vh;
             width: 100vw;
             cursor: pointer;
-        }
-        
-        .phase {
-            display: none;
-            width: 100%;
-            min-height: 100vh;
-        }
-        
-        .active {
-            display: block;
-        }
-        
-        /* Fase 1 - Apenas pétalas */
-        #phase1 {
-            background-color: #000;
-            position: relative;
+            font-family: 'Courier New', monospace;
         }
         
         .petal {
@@ -70,193 +55,17 @@
             text-align: center;
         }
         
-        /* Fase 2 - Código Binário */
-        #phase2 {
-            background-color: #000;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            padding: 20px;
-            color: #ff0000;
-            font-family: 'Courier New', monospace;
-        }
-        
-        .notification {
+        .phase-info {
+            position: fixed;
+            bottom: 20px;
+            left: 0;
+            width: 100%;
             text-align: center;
-            margin-bottom: 40px;
-            max-width: 800px;
-            border: 1px solid #ff0000;
-            padding: 20px;
-            background-color: #000;
-        }
-        
-        .header {
-            font-size: 22px;
-            font-weight: bold;
-            text-transform: uppercase;
-            margin-bottom: 15px;
-            text-shadow: 0 0 5px #ff0000;
-        }
-        
-        .violation-code {
-            font-size: 16px;
-            margin-top: 20px;
             color: #ff0000;
-        }
-        
-        .binary-code {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 10px;
-            justify-content: center;
-            margin: 30px 0;
-            padding: 20px;
-            background-color: #000;
-            border-radius: 5px;
-            border: 1px solid #ff0000;
-            max-width: 90%;
-        }
-        
-        .binary-digit {
-            width: 30px;
-            height: 30px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 16px;
-            border: 1px solid #ff0000;
-            border-radius: 3px;
-            background-color: #000;
-        }
-        
-        .one {
-            background-color: #ff0000;
-            color: #000;
-        }
-        
-        .zero {
-            background-color: #000;
-            color: #ff0000;
-        }
-        
-        .terminal-line {
-            margin: 10px 0;
-            color: #ff0000;
-            text-align: center;
-        }
-        
-        .countdown {
-            margin-top: 30px;
             font-size: 14px;
-            color: #ff0000;
-            text-align: center;
-            border: 1px solid #ff0000;
-            padding: 10px 20px;
-            background-color: #000;
-        }
-        
-        .access-form {
-            display: none;
-            flex-direction: column;
-            align-items: center;
-            gap: 15px;
-            margin-top: 30px;
-            animation: fadeIn 1s;
-            border: 1px solid #ff0000;
-            padding: 20px;
-            background-color: #000;
-        }
-        
-        input {
-            padding: 12px 20px;
-            background-color: #000;
-            border: 1px solid #ff0000;
-            border-radius: 5px;
-            color: #ff0000;
-            font-size: 16px;
-            width: 200px;
-            text-align: center;
-            font-family: 'Courier New', monospace;
-        }
-        
-        input::placeholder {
-            color: #990000;
-        }
-        
-        button {
-            padding: 10px 20px;
-            background-color: #000;
-            border: 1px solid #ff0000;
-            border-radius: 5px;
-            color: #ff0000;
-            cursor: pointer;
-            transition: all 0.3s;
-            font-family: 'Courier New', monospace;
-        }
-        
-        button:hover {
-            background-color: #ff0000;
-            color: #000;
-        }
-        
-        .error-message {
-            color: #ff0000;
-            margin-top: 10px;
-            display: none;
-            text-align: center;
-        }
-        
-        /* Fase 3 - Convite */
-        #phase3 {
-            background-color: #000;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            color: #ff0000;
-            font-family: 'Courier New', monospace;
-            padding: 20px;
-        }
-        
-        .invitation {
-            background-color: rgba(0, 0, 0, 0.3);
-            padding: 30px;
-            border-radius: 8px;
-            border: 1px solid #ff0000;
-            text-align: center;
-            max-width: 90%;
-            box-shadow: 0 0 20px rgba(255, 0, 0, 0.3);
-        }
-        
-        .invitation h2 {
-            margin-bottom: 20px;
-            text-transform: uppercase;
-            letter-spacing: 2px;
-            color: #ff0000;
-        }
-        
-        .countdown-days {
-            font-size: 18px;
-            margin: 10px 0;
-            color: #ff0000;
-        }
-        
-        .invitation-details {
-            margin: 15px 0;
-            line-height: 1.6;
-        }
-        
-        .blink {
-            animation: blink 1s steps(1) infinite;
-        }
-        
-        @keyframes blink {
-            50% { opacity: 0; }
-        }
-        
-        @keyframes fadeIn {
-            from { opacity: 0; }
-            to { opacity: 1; }
+            z-index: 5;
+            padding: 10px;
+            background-color: rgba(0, 0, 0, 0.7);
         }
         
         @keyframes fall {
@@ -272,183 +81,85 @@
             from { opacity: 1; }
             to { opacity: 0; }
         }
-        
-        @media (max-width: 768px) {
-            .header {
-                font-size: 18px;
-            }
-            
-            .binary-digit {
-                width: 25px;
-                height: 25px;
-                font-size: 14px;
-            }
-            
-            input {
-                width: 180px;
-                font-size: 14px;
-            }
-            
-            .invitation {
-                padding: 20px;
-            }
-        }
     </style>
 </head>
 <body>
-    <!-- Fase 1: Apenas pétalas amarelas - AGORA É A PADRÃO -->
-    <div id="phase1" class="phase active">
-        <div class="message" id="message">not done</div>
-    </div>
-    
-    <!-- Fase 2: Código binário -->
-    <div id="phase2" class="phase">
-        <div class="notification">
-            <div class="header">IDENTIFIED AS FAILED PERIMETER ESCAPE BY DEMA COUNCIL</div>
-            <div class="header">VIOLATION OF SECTION 1539864215 OF VIALIST CODE OF CONDUCT</div>
-            <div class="violation-code">// VIOLATION CODE: 74-82-65-76-75</div>
-        </div>
-        
-        <div class="binary-code">
-            <!-- Código binário para 9880612 -->
-            <!-- 9 = 1001 → 0001001 (7 bits) -->
-            <div class="binary-digit zero">0</div>
-            <div class="binary-digit zero">0</div>
-            <div class="binary-digit zero">0</div>
-            <div class="binary-digit one">1</div>
-            <div class="binary-digit zero">0</div>
-            <div class="binary-digit zero">0</div>
-            <div class="binary-digit one">1</div>
-            
-            <!-- 8 = 1000 → 0001000 (7 bits) -->
-            <div class="binary-digit zero">0</div>
-            <div class="binary-digit zero">0</div>
-            <div class="binary-digit zero">0</div>
-            <div class="binary-digit one">1</div>
-            <div class="binary-digit zero">0</div>
-            <div class="binary-digit zero">0</div>
-            <div class="binary-digit zero">0</div>
-            
-            <!-- 8 = 1000 → 0001000 (7 bits) -->
-            <div class="binary-digit zero">0</div>
-            <div class="binary-digit zero">0</div>
-            <div class="binary-digit zero">0</div>
-            <div class="binary-digit one">1</div>
-            <div class="binary-digit zero">0</div>
-            <div class="binary-digit zero">0</div>
-            <div class="binary-digit zero">0</div>
-            
-            <!-- 0 = 0000 → 0000000 (7 bits) -->
-            <div class="binary-digit zero">0</div>
-            <div class="binary-digit zero">0</div>
-            <div class="binary-digit zero">0</div>
-            <div class="binary-digit zero">0</div>
-            <div class="binary-digit zero">0</div>
-            <div class="binary-digit zero">0</div>
-            <div class="binary-digit zero">0</div>
-            
-            <!-- 6 = 0110 → 0000110 (7 bits) -->
-            <div class="binary-digit zero">0</div>
-            <div class="binary-digit zero">0</div>
-            <div class="binary-digit zero">0</div>
-            <div class="binary-digit zero">0</div>
-            <div class="binary-digit one">1</div>
-            <div class="binary-digit one">1</div>
-            <div class="binary-digit zero">0</div>
-            
-            <!-- 1 = 0001 → 0000001 (7 bits) -->
-            <div class="binary-digit zero">0</div>
-            <div class="binary-digit zero">0</div>
-            <div class="binary-digit zero">0</div>
-            <div class="binary-digit zero">0</div>
-            <div class="binary-digit zero">0</div>
-            <div class="binary-digit zero">0</div>
-            <div class="binary-digit one">1</div>
-            
-            <!-- 2 = 0010 → 0000010 (7 bits) -->
-            <div class="binary-digit zero">0</div>
-            <div class="binary-digit zero">0</div>
-            <div class="binary-digit zero">0</div>
-            <div class="binary-digit zero">0</div>
-            <div class="binary-digit zero">0</div>
-            <div class="binary-digit one">1</div>
-            <div class="binary-digit zero">0</div>
-        </div>
-        
-        <div class="terminal-line">
-            > DECODING REQUIRED: NICO APPROVAL <span class="blink">_</span>
-        </div>
-        
-        <div class="access-form" id="accessForm">
-            <input type="text" id="codeInput" placeholder="ENTER ACCESS CODE">
-            <button id="submitCode">VALIDATE</button>
-            <div class="error-message" id="errorMessage">ACCESS DENIED</div>
-        </div>
-        
-        <div class="countdown" id="countdown">
-            SYSTEM UPDATE IN: <span id="countdown-timer">48:00:00</span>
-        </div>
-    </div>
-    
-    <!-- Fase 3: Convite -->
-    <div id="phase3" class="phase">
-        <div class="invitation">
-            <h2>AUTHORIZED ACCESS BISHOP #988</h2>
-            <div class="invitation-details">
-                <p>Festa de Halloween acontecerá dia 26 de outubro </p>
-                <p>Local: Condomínio Panorâmico Home Club</p>
-                <p>Endereço: Rua Imbariê, 53 - Vila Prudente</p>
-            </div>
-            <p class="countdown-days">Faltam <span id="countdown-days">30</span> dias para o evento<span class="blink">_</span></p>
-            <p>Venha fantasiado.. ou será descoberto rapidamente.</p>
-        </div>
-    </div>
+    <div class="message" id="message">NOT DONE</div>
+    <div class="phase-info" id="phaseInfo">FASE 1: Pétalas Amarelas - Interaja clicando nas pétalas</div>
 
     <script>
-        // Configuração simplificada - SEMPRE começa na Fase 1
-        const phase1 = document.getElementById('phase1');
-        const phase2 = document.getElementById('phase2');
-        const phase3 = document.getElementById('phase3');
-        const message = document.getElementById('message');
+        // Configuração de datas
+        const startDate = new Date('2025-09-03'); // Data de início do evento
+        const currentDate = new Date(); // Data atual
         
-        // Inicializar sempre com a Fase 1
-        function initializeSite() {
-            // SEMPRE mostrar a Fase 1 primeiro
-            showPhase1();
+        // Verificar se a data de início já chegou
+        if (currentDate < startDate) {
+            // Mostrar mensagem de aguardo se ainda não chegou a data de início
+            document.body.innerHTML = `
+                <div style="display: flex; justify-content: center; align-items: center; height: 100vh; background-color: #000; color: #ff0000; font-family: 'Courier New', monospace; text-align: center; padding: 20px;">
+                    <div>
+                        <h2>SYSTEM OFFLINE</h2>
+                        <p>O sistema será ativado em 04/09/2025</p>
+                        <p>Tempo restante: <span id="start-countdown"></span></p>
+                    </div>
+                </div>
+            `;
             
+            const startCountdownElement = document.getElementById('start-countdown');
+            
+            function updateStartCountdown() {
+                const now = new Date();
+                const timeRemaining = startDate - now;
+                
+                if (timeRemaining <= 0) {
+                    startCountdownElement.textContent = "00:00:00:00";
+                    location.reload();
+                    return;
+                }
+                
+                const days = Math.floor(timeRemaining / (1000 * 60 * 60 * 24));
+                const hours = Math.floor((timeRemaining % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+                const minutes = Math.floor((timeRemaining % (1000 * 60 * 60)) / (1000 * 60));
+                const seconds = Math.floor((timeRemaining % (1000 * 60)) / 1000);
+                
+                startCountdownElement.textContent = `${days}d ${hours.toString().padStart(2, '0')}:${minutes.toString().padStart(2, '0')}:${seconds.toString().padStart(2, '0')}`;
+                
+                setTimeout(updateStartCountdown, 1000);
             }
+            
+            updateStartCountdown();
+        } else {
+            // Data de início já passou, iniciar fase 1
+            initializePhase1();
         }
         
-        // Mostrar a fase 1 com pétalas caindo
-        function showPhase1() {
-            phase1.classList.add('active');
-            phase2.classList.remove('active');
-            phase3.classList.remove('active');
+        function initializePhase1() {
+            const message = document.getElementById('message');
+            const phaseInfo = document.getElementById('phaseInfo');
+            
+            // Atualizar informação da fase
+            const daysPassed = Math.floor((currentDate - startDate) / (1000 * 60 * 60 * 24));
+            
+            if (daysPassed < 2) {
+                phaseInfo.textContent = `FASE 1: Pétalas Amarelas - Próxima fase em ${2 - daysPassed} dia${daysPassed === 1 ? '' : 's'}`;
+            } else {
+                phaseInfo.textContent = "FASE 1: Pétalas Amarelas - Fase finalizada, aguarde redirecionamento";
+                
+                // Redirecionar para próxima fase após 5 segundos
+                setTimeout(() => {
+                    // Aqui você pode redirecionar para a fase 2 quando estiver pronta
+                    phaseInfo.textContent = "Redirecionamento disponível para a Fase 2";
+                }, 5000);
+            }
+            
+            // Criar pétalas
             createPetals();
-        }
-        
-        // Mostrar a fase 2
-        function showPhase2(showForm) {
-            phase1.classList.remove('active');
-            phase2.classList.add('active');
-            phase3.classList.remove('active');
-            
-            if (showForm) {
-                document.getElementById('accessForm').style.display = 'flex';
-                document.getElementById('countdown').style.display = 'none';
-            }
-        }
-        
-        // Mostrar a fase 3 com o convite
-        function showPhase3() {
-            phase1.classList.remove('active');
-            phase2.classList.remove('active');
-            phase3.classList.add('active');
         }
         
         // Criar pétalas caindo
         function createPetals() {
             const body = document.body;
+            const message = document.getElementById('message');
             
             // Criar pétalas continuamente
             setInterval(() => {
@@ -498,6 +209,7 @@
         
         // Mostrar mensagem
         function showMessage() {
+            const message = document.getElementById('message');
             message.style.display = 'block';
             
             setTimeout(() => {
@@ -508,11 +220,6 @@
                 }, 1000);
             }, 1500);
         }
-        
-        // Iniciar quando a página carregar
-        window.onload = function() {
-            initializeSite();
-        };
     </script>
 </body>
 </html>
