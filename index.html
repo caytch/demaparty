@@ -140,10 +140,10 @@
             // Atualizar informação da fase
             const daysPassed = Math.floor((currentDate - startDate) / (1000 * 60 * 60 * 24));
             
-            if (daysPassed < 2) {
-                phaseInfo.textContent = `FASE 1: Pétalas Amarelas - Próxima fase em ${2 - daysPassed} dia${daysPassed === 1 ? '' : 's'}`;
+           if (daysPassed < 2) {
+                phaseInfo.textContent = `CA N YOU SEE THEM ? ${3 - daysPassed} dia${daysPassed === 3 ? '' : 's'}`;
             } else {
-                phaseInfo.textContent = "FASE 1: Pétalas Amarelas - Fase finalizada, aguarde redirecionamento";
+                phaseInfo.textContent = "Aguarde redirecionamento"; 
                 
                 // Redirecionar para próxima fase após 5 segundos
                 setTimeout(() => {
@@ -223,4 +223,5 @@
     </script>
 </body>
 </html>
+
 
