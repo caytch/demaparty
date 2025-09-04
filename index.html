@@ -61,11 +61,37 @@
             left: 0;
             width: 100%;
             text-align: center;
-            color: #ff0000;
-            font-size: 14px;
+            color: #ffcc00;
+            font-size: 18px;
+            font-weight: bold;
+            letter-spacing: 2px;
             z-index: 5;
-            padding: 10px;
+            padding: 15px;
             background-color: rgba(0, 0, 0, 0.7);
+            text-transform: uppercase;
+            text-shadow: 0 0 10px rgba(255, 204, 0, 0.7);
+        }
+        
+        .offline-message {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: #000;
+            color: #ff0000;
+            font-family: 'Courier New', monospace;
+            text-align: center;
+            padding: 20px;
+        }
+        
+        .offline-content {
+            max-width: 600px;
+        }
+        
+        .offline-content h2 {
+            margin-bottom: 20px;
+            text-transform: uppercase;
+            letter-spacing: 3px;
         }
         
         @keyframes fall {
@@ -81,11 +107,21 @@
             from { opacity: 1; }
             to { opacity: 0; }
         }
+        
+        @keyframes glow {
+            0% { text-shadow: 0 0 5px rgba(255, 204, 0, 0.7); }
+            50% { text-shadow: 0 0 20px rgba(255, 204, 0, 0.9); }
+            100% { text-shadow: 0 0 5px rgba(255, 204, 0, 0.7); }
+        }
+        
+        .glow-text {
+            animation: glow 2s infinite;
+        }
     </style>
 </head>
 <body>
-    <div class="message" id="message">NOT DONE</div>
-    <div class="phase-info" id="phaseInfo">CAN Y SEE THEM??</div>
+    <div class="message" id="message">not done</div>
+    <div class="phase-info" id="phaseInfo">CAN YOU SEE THEM?</div>
 
     <script>
         // Configuração de datas
@@ -96,10 +132,10 @@
         if (currentDate < startDate) {
             // Mostrar mensagem de aguardo se ainda não chegou a data de início
             document.body.innerHTML = `
-                <div style="display: flex; justify-content: center; align-items: center; height: 100vh; background-color: #000; color: #ff0000; font-family: 'Courier New', monospace; text-align: center; padding: 20px;">
-                    <div>
+                <div class="offline-message">
+                    <div class="offline-content">
                         <h2>SYSTEM OFFLINE</h2>
-                        <p>O sistema será ativado em 04/09/2025</p>
+                        <p>O sistema será ativado em 03/09/2025</p>
                         <p>Tempo restante: <span id="start-countdown"></span></p>
                     </div>
                 </div>
@@ -136,21 +172,6 @@
         function initializePhase1() {
             const message = document.getElementById('message');
             const phaseInfo = document.getElementById('phaseInfo');
-            
-            // Atualizar informação da fase
-            const daysPassed = Math.floor((currentDate - startDate) / (1000 * 60 * 60 * 24));
-            
-           if (daysPassed < 2) {
-                phaseInfo.textContent = `CA N YOU SEE THEM ? ${3 - daysPassed} dia${daysPassed === 3 ? '' : 's'}`;
-            } else {
-                phaseInfo.textContent = "Aguarde redirecionamento"; 
-                
-                // Redirecionar para próxima fase após 5 segundos
-                setTimeout(() => {
-                    // Aqui você pode redirecionar para a fase 2 quando estiver pronta
-                    phaseInfo.textContent = "Redirecionamento disponível para a Fase 2";
-                }, 5000);
-            }
             
             // Criar pétalas
             createPetals();
@@ -223,5 +244,3 @@
     </script>
 </body>
 </html>
-
-
