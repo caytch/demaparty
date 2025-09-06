@@ -13,233 +13,312 @@
         
         body {
             background-color: #000;
-            overflow: hidden;
-            height: 100vh;
-            width: 100vw;
-            cursor: pointer;
-            font-family: 'Courier New', monospace;
-        }
-        
-        .petal {
-            position: absolute;
-            background-color: #ffcc00;
-            width: 20px;
-            height: 30px;
-            border-radius: 50% 50% 50% 50% / 60% 60% 40% 40%;
-            opacity: 0.9;
-            cursor: pointer;
-            transition: transform 0.3s, opacity 0.3s;
-            z-index: 2;
-            box-shadow: 0 0 8px rgba(255, 204, 0, 0.6);
-        }
-        
-        .petal:hover {
-            transform: scale(1.2);
-            opacity: 1;
-        }
-        
-        .message {
-            position: fixed;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            background-color: rgba(0, 0, 0, 0.8);
-            color: #ff0000;
-            padding: 20px 40px;
-            border: 2px solid #ff0000;
-            border-radius: 10px;
-            font-size: 24px;
-            z-index: 100;
-            display: none;
-            box-shadow: 0 0 20px rgba(255, 0, 0, 0.5);
-            text-align: center;
-        }
-        
-        .phase-info {
-            position: fixed;
-            bottom: 20px;
-            left: 0;
-            width: 100%;
-            text-align: center;
-            color: #ffcc00;
-            font-size: 18px;
-            font-weight: bold;
-            letter-spacing: 2px;
-            z-index: 5;
-            padding: 15px;
-            background-color: rgba(0, 0, 0, 0.7);
-            text-transform: uppercase;
-            text-shadow: 0 0 10px rgba(255, 204, 0, 0.7);
-        }
-        
-        .offline-message {
+            min-height: 100vh;
             display: flex;
             justify-content: center;
             align-items: center;
-            height: 100vh;
-            background-color: #000;
-            color: #ff0000;
             font-family: 'Courier New', monospace;
-            text-align: center;
+            color: #ff0000;
             padding: 20px;
         }
-        
-        .offline-content {
-            max-width: 600px;
+
+        /* ======= FASE 2 ======= */
+        .fase2 {
+            text-align: center;
+            max-width: 800px;
+            display: none;
         }
-        
-        .offline-content h2 {
+
+        .fase2.active { display: block; }
+
+        .notification {
+            margin-bottom: 40px;
+            border: 1px solid #ff0000;
+            padding: 20px;
+            background-color: #000;
+        }
+
+        .header {
+            font-size: 22px;
+            font-weight: bold;
+            text-transform: uppercase;
+            margin-bottom: 15px;
+            text-shadow: 0 0 5px #ff0000;
+        }
+
+        .violation-code {
+            font-size: 16px;
+            margin-top: 20px;
+            color: #ff0000;
+        }
+
+        .binary-code {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            justify-content: center;
+            margin: 30px 0;
+            padding: 20px;
+            border: 1px solid #ff0000;
+            border-radius: 5px;
+            max-width: 90%;
+        }
+
+        .binary-digit {
+            width: 30px;
+            height: 30px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 16px;
+            border: 1px solid #ff0000;
+            border-radius: 3px;
+            background-color: #000;
+        }
+
+        .one {
+            background-color: #ff0000;
+            color: #000;
+        }
+
+        .zero {
+            background-color: #000;
+            color: #ff0000;
+        }
+
+        .terminal-line {
+            margin: 10px 0;
+            text-align: center;
+        }
+
+        .access-form {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 15px;
+            margin-top: 30px;
+            border: 1px solid #ff0000;
+            padding: 20px;
+            background-color: #000;
+        }
+
+        input {
+            padding: 12px 20px;
+            background-color: #000;
+            border: 1px solid #ff0000;
+            border-radius: 5px;
+            color: #ff0000;
+            font-size: 16px;
+            width: 200px;
+            text-align: center;
+            font-family: 'Courier New', monospace;
+        }
+
+        input::placeholder {
+            color: #990000;
+        }
+
+        button {
+            padding: 10px 20px;
+            background-color: #000;
+            border: 1px solid #ff0000;
+            border-radius: 5px;
+            color: #ff0000;
+            cursor: pointer;
+            transition: all 0.3s;
+            font-family: 'Courier New', monospace;
+        }
+
+        button:hover {
+            background-color: #ff0000;
+            color: #000;
+        }
+
+        .error-message {
+            color: #ff0000;
+            margin-top: 10px;
+            display: none;
+            text-align: center;
+        }
+
+        /* ======= FASE 3 ======= */
+        .fase3 {
+            display: none;
+            text-align: center;
+            border: 1px solid #ff0000;
+            padding: 30px;
+            max-width: 90%;
+            box-shadow: 0 0 20px rgba(255, 0, 0, 0.3);
+        }
+
+        .fase3.active { display: block; }
+
+        .invitation h2 {
             margin-bottom: 20px;
             text-transform: uppercase;
-            letter-spacing: 3px;
+            letter-spacing: 2px;
         }
-        
-        @keyframes fall {
-            from { 
-                transform: translateY(-100px) rotate(0deg); 
-            }
-            to { 
-                transform: translateY(100vh) rotate(360deg); 
-            }
+
+        .countdown-days {
+            font-size: 18px;
+            margin: 10px 0;
         }
-        
-        @keyframes fadeOut {
-            from { opacity: 1; }
-            to { opacity: 0; }
+
+        .invitation-details {
+            margin: 15px 0;
+            line-height: 1.6;
         }
-        
-        @keyframes glow {
-            0% { text-shadow: 0 0 5px rgba(255, 204, 0, 0.7); }
-            50% { text-shadow: 0 0 20px rgba(255, 204, 0, 0.9); }
-            100% { text-shadow: 0 0 5px rgba(255, 204, 0, 0.7); }
+
+        /* Piscar */
+        .blink {
+            animation: blink 1s steps(1) infinite;
         }
-        
-        .glow-text {
-            animation: glow 2s infinite;
+
+        @keyframes blink {
+            50% { opacity: 0; }
         }
     </style>
 </head>
 <body>
-    <div class="message" id="message">not done</div>
-    <div class="phase-info" id="phaseInfo">CAN YOU SEE THEM?</div>
+    <!-- FASE 2 -->
+    <div class="fase2 active" id="fase2">
+        <div class="notification">
+            <div class="header">IDENTIFIED AS FAILED PERIMETER ESCAPE BY DEMA COUNCIL</div>
+            <div class="header">VIOLATION OF SECTION 1539864215 OF VIALIST CODE OF CONDUCT</div>
+            <div class="violation-code">// VIOLATION CODE: 74-82-65-76-75</div>
+        </div>
+        
+        <div class="binary-code">
+            <!-- binário do código 9880612 -->
+            <div class="binary-digit zero">0</div>
+            <div class="binary-digit zero">0</div>
+            <div class="binary-digit zero">0</div>
+            <div class="binary-digit one">1</div>
+            <div class="binary-digit zero">0</div>
+            <div class="binary-digit zero">0</div>
+            <div class="binary-digit one">1</div>
+            
+            <div class="binary-digit zero">0</div>
+            <div class="binary-digit zero">0</div>
+            <div class="binary-digit zero">0</div>
+            <div class="binary-digit one">1</div>
+            <div class="binary-digit zero">0</div>
+            <div class="binary-digit zero">0</div>
+            <div class="binary-digit zero">0</div>
+            
+            <div class="binary-digit zero">0</div>
+            <div class="binary-digit zero">0</div>
+            <div class="binary-digit zero">0</div>
+            <div class="binary-digit one">1</div>
+            <div class="binary-digit zero">0</div>
+            <div class="binary-digit zero">0</div>
+            <div class="binary-digit zero">0</div>
+            
+            <div class="binary-digit zero">0</div>
+            <div class="binary-digit zero">0</div>
+            <div class="binary-digit zero">0</div>
+            <div class="binary-digit zero">0</div>
+            <div class="binary-digit zero">0</div>
+            <div class="binary-digit zero">0</div>
+            <div class="binary-digit zero">0</div>
+            
+            <div class="binary-digit zero">0</div>
+            <div class="binary-digit zero">0</div>
+            <div class="binary-digit zero">0</div>
+            <div class="binary-digit zero">0</div>
+            <div class="binary-digit one">1</div>
+            <div class="binary-digit one">1</div>
+            <div class="binary-digit zero">0</div>
+            
+            <div class="binary-digit zero">0</div>
+            <div class="binary-digit zero">0</div>
+            <div class="binary-digit zero">0</div>
+            <div class="binary-digit zero">0</div>
+            <div class="binary-digit zero">0</div>
+            <div class="binary-digit zero">0</div>
+            <div class="binary-digit one">1</div>
+            
+            <div class="binary-digit zero">0</div>
+            <div class="binary-digit zero">0</div>
+            <div class="binary-digit zero">0</div>
+            <div class="binary-digit zero">0</div>
+            <div class="binary-digit zero">0</div>
+            <div class="binary-digit one">1</div>
+            <div class="binary-digit zero">0</div>
+        </div>
+        
+        <div class="terminal-line">
+            > DECODING REQUIRED: CLANCY APPROVAL <span class="blink">_</span>
+        </div>
+        
+        <div class="terminal-line">
+            > FORMAT: 7 BITS PER BISHOP | CONVERT TO D_CIMAL | EXTR_CT LAST DIGIT<span class="blink">_</span>
+        </div>
+        
+        <div class="access-form">
+            <input type="text" id="codeInput" placeholder="ENTER ACCESS CODE">
+            <button id="submitCode">VALIDATE</button>
+            <div class="error-message" id="errorMessage">ACCESS DENIED</div>
+        </div>
+    </div>
+
+    <!-- FASE 3 -->
+    <div class="fase3" id="fase3">
+        <div class="invitation">
+            <h2>AUTHORIZED ACCESS BISHOP #988</h2>
+            <div class="invitation-details">
+                <p>Festa de Halloween acontecerá dia 26 de outubro </p>
+                <p>Local: Condomínio Panorâmico Home Club</p>
+                <p>Endereço: Rua Imbariê, 53 - Vila Prudente</p>
+            </div>
+            <p class="countdown-days">Faltam <span id="countdown-days">30</span> dias para o evento<span class="blink">_</span></p>
+            <p>Venha fantasiado.. ou será descoberto rapidamente.</p>
+        </div>
+    </div>
 
     <script>
-        // Configuração de datas - ATUALIZADA PARA 04/09/2025
-        const startDate = new Date('2025-09-04'); // Data de início do evento (AGORA 04/09/2025)
-        const currentDate = new Date(); // Data atual
+        const codeInput = document.getElementById('codeInput');
+        const submitCode = document.getElementById('submitCode');
+        const errorMessage = document.getElementById('errorMessage');
+
+        const fase2 = document.getElementById('fase2');
+        const fase3 = document.getElementById('fase3');
         
-        // Verificar se a data de início já chegou
-        if (currentDate < startDate) {
-            // Mostrar mensagem de aguardo se ainda não chegou a data de início
-            document.body.innerHTML = `
-                <div class="offline-message">
-                    <div class="offline-content">
-                        <h2>SYSTEM OFFLINE</h2>
-                        <p>O sistema será ativado em 04/09/2025</p>
-                        <p>Tempo restante: <span id="start-countdown"></span></p>
-                    </div>
-                </div>
-            `;
+        const correctPassword = "9880612";
+        
+        function checkCode() {
+            const code = codeInput.value.trim();
             
-            const startCountdownElement = document.getElementById('start-countdown');
-            
-            function updateStartCountdown() {
-                const now = new Date();
-                const timeRemaining = startDate - now;
-                
-                if (timeRemaining <= 0) {
-                    startCountdownElement.textContent = "00:00:00:00";
-                    location.reload();
-                    return;
-                }
-                
-                const days = Math.floor(timeRemaining / (1000 * 60 * 60 * 24));
-                const hours = Math.floor((timeRemaining % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-                const minutes = Math.floor((timeRemaining % (1000 * 60 * 60)) / (1000 * 60));
-                const seconds = Math.floor((timeRemaining % (1000 * 60)) / 1000);
-                
-                startCountdownElement.textContent = `${days}d ${hours.toString().padStart(2, '0')}:${minutes.toString().padStart(2, '0')}:${seconds.toString().padStart(2, '0')}`;
-                
-                setTimeout(updateStartCountdown, 1000);
+            if (code === correctPassword) {
+                fase2.classList.remove("active");
+                fase2.style.display = "none";
+                fase3.classList.add("active");
+                fase3.style.display = "block";
+                startCountdown();
+            } else {
+                errorMessage.style.display = 'block';
+                codeInput.style.borderColor = '#ff0000';
+                setTimeout(() => {
+                    errorMessage.style.display = 'none';
+                }, 3000);
             }
-            
-            updateStartCountdown();
-        } else {
-            // Data de início já passou, iniciar fase 1
-            initializePhase1();
         }
-        
-        function initializePhase1() {
-            const message = document.getElementById('message');
-            const phaseInfo = document.getElementById('phaseInfo');
-            
-            // Criar pétalas
-            createPetals();
-        }
-        
-        // Criar pétalas caindo
-        function createPetals() {
-            const body = document.body;
-            const message = document.getElementById('message');
-            
-            // Criar pétalas continuamente
-            setInterval(() => {
-                const petal = document.createElement('div');
-                petal.classList.add('petal');
-                
-                // Posição aleatória
-                const left = Math.random() * 100;
-                const animationDuration = 8 + Math.random() * 10;
-                const rotation = Math.random() * 360;
-                const size = 15 + Math.random() * 15;
-                
-                petal.style.left = `${left}%`;
-                petal.style.top = `${-50}px`;
-                petal.style.width = `${size}px`;
-                petal.style.height = `${size * 1.5}px`;
-                petal.style.animation = `fall ${animationDuration}s linear forwards`;
-                petal.style.transform = `rotate(${rotation}deg)`;
-                
-                // Evento de clique na pétala
-                petal.addEventListener('click', function() {
-                    showMessage();
-                    this.style.opacity = '0';
-                    this.style.pointerEvents = 'none';
-                    setTimeout(() => {
-                        if (this.parentNode) {
-                            body.removeChild(this);
-                        }
-                    }, 1000);
-                });
-                
-                // Remover pétala após cair
-                setTimeout(() => {
-                    if (petal.parentNode) {
-                        petal.style.opacity = '0';
-                        setTimeout(() => {
-                            if (petal.parentNode) {
-                                body.removeChild(petal);
-                            }
-                        }, 1000);
-                    }
-                }, animationDuration * 1000);
-                
-                body.appendChild(petal);
-            }, 500); // Nova pétala a cada 500ms
-        }
-        
-        // Mostrar mensagem
-        function showMessage() {
-            const message = document.getElementById('message');
-            message.style.display = 'block';
-            
-            setTimeout(() => {
-                message.style.animation = 'fadeOut 1s forwards';
-                setTimeout(() => {
-                    message.style.display = 'none';
-                    message.style.animation = '';
-                }, 1000);
-            }, 1500);
+
+        submitCode.addEventListener('click', checkCode);
+        codeInput.addEventListener('keypress', function(e) {
+            if (e.key === 'Enter') checkCode();
+        });
+        window.onload = () => codeInput.focus();
+
+        // Contagem regressiva para 26 de outubro
+        function startCountdown() {
+            const currentDate = new Date();
+            const halloweenDate = new Date(currentDate.getFullYear(), 9, 26); 
+            if (currentDate > halloweenDate) {
+                halloweenDate.setFullYear(halloweenDate.getFullYear() + 1);
+            }
+            const daysUntilHalloween = Math.floor((halloweenDate - currentDate) / (1000 * 60 * 60 * 24));
+            document.getElementById('countdown-days').textContent = daysUntilHalloween;
         }
     </script>
 </body>
